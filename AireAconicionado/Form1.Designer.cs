@@ -42,6 +42,8 @@
             this.PuertacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertaVentanacheckBox = new System.Windows.Forms.CheckBox();
             this.Garficachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Iniciarbutton = new System.Windows.Forms.Button();
+            this.Pararbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempEscapenumericUpDown)).BeginInit();
@@ -152,11 +154,31 @@
             this.Garficachart.Text = "chart1";
             this.Garficachart.Click += new System.EventHandler(this.Garficachart_Click);
             // 
+            // Iniciarbutton
+            // 
+            this.Iniciarbutton.Location = new System.Drawing.Point(19, 322);
+            this.Iniciarbutton.Name = "Iniciarbutton";
+            this.Iniciarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Iniciarbutton.TabIndex = 11;
+            this.Iniciarbutton.Text = "Iniciar";
+            this.Iniciarbutton.UseVisualStyleBackColor = true;
+            // 
+            // Pararbutton
+            // 
+            this.Pararbutton.Location = new System.Drawing.Point(109, 322);
+            this.Pararbutton.Name = "Pararbutton";
+            this.Pararbutton.Size = new System.Drawing.Size(75, 23);
+            this.Pararbutton.TabIndex = 12;
+            this.Pararbutton.Text = "Parar";
+            this.Pararbutton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Pararbutton);
+            this.Controls.Add(this.Iniciarbutton);
             this.Controls.Add(this.Garficachart);
             this.Controls.Add(this.PuertaVentanacheckBox);
             this.Controls.Add(this.PuertacheckBox);
@@ -192,6 +214,8 @@
         private System.Windows.Forms.CheckBox PuertacheckBox;
         private System.Windows.Forms.CheckBox PuertaVentanacheckBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart Garficachart;
+        private System.Windows.Forms.Button Iniciarbutton;
+        private System.Windows.Forms.Button Pararbutton;
     }
 }
 
