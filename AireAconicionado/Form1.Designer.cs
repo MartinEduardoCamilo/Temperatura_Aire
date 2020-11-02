@@ -152,7 +152,6 @@
             this.Garficachart.Size = new System.Drawing.Size(519, 394);
             this.Garficachart.TabIndex = 10;
             this.Garficachart.Text = "chart1";
-            this.Garficachart.Click += new System.EventHandler(this.Garficachart_Click);
             // 
             // Iniciarbutton
             // 
@@ -162,6 +161,7 @@
             this.Iniciarbutton.TabIndex = 11;
             this.Iniciarbutton.Text = "Iniciar";
             this.Iniciarbutton.UseVisualStyleBackColor = true;
+            this.Iniciarbutton.Click += new System.EventHandler(this.Iniciarbutton_Click);
             // 
             // Pararbutton
             // 
@@ -192,6 +192,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempEscapenumericUpDown)).EndInit();
