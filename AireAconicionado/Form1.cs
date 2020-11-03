@@ -28,7 +28,7 @@ namespace AireAconicionado
             int numero = 0;
 
             Random random = new Random();
-            numero = random.Next(1, 3);
+            numero = random.Next(1, 4);
             return numero;
         }
 
@@ -42,22 +42,32 @@ namespace AireAconicionado
                         VentanacheckBox.Checked = true;
                         PuertacheckBox.Checked = false;
                         PuertaVentanacheckBox.Checked = false;
-
+                        GraficoBarra(Decision());
                     } break;
                 case 2:
                     {
                         PuertacheckBox.Checked = true;
                         VentanacheckBox.Checked = false;
                         PuertaVentanacheckBox.Checked = false;
-                        
-                    }break;
+                        GraficoBarra(Decision());
+                    }
+                    break;
                 case 3:
                     {
                         PuertaVentanacheckBox.Checked = true;
                         PuertacheckBox.Checked = false;
                         VentanacheckBox.Checked = false;
-                        
-                    }break;
+                        GraficoBarra(Decision());
+                    }
+                    break;
+                case 4:
+                    {
+                        PuertaVentanacheckBox.Checked = false;
+                        PuertacheckBox.Checked = false;
+                        VentanacheckBox.Checked = false;
+                        GraficoBarra(Decision());
+                    }
+                    break;
 
                 default: break;
             }
@@ -66,23 +76,51 @@ namespace AireAconicionado
 
         private void GraficoBarra(int numero)
         {
+            const double ventana = 0.10;
+            const double Puerta = 0.25;
+
+            int TempAmbiente = (int)TempAierenumericUpDown.Value;
+            int TempAire = (int)TempAierenumericUpDown.Value;
+            double Tiempo = (int)TiemponumericUpDown.Value;
+
+            double aux = 0;
+            double Enfriamiento = 0;
+
+
             switch (numero)
             {
                 case 1:
                     {
-                        
+                        aux = (TempAmbiente - TempAire) * ventana; // cuando una ventana esta abierta se aumenta la temperatura de la habitacion
+                        Enfriamiento = Tiempo * ventana;
+                        Tiempo += Enfriamiento;
+                        EnfriamientotextBox.Text = Enfriamiento.ToString();
                     }
                     break;
                 case 2:
                     {
-                       
 
+                        aux = (TempAmbiente - TempAire) * Puerta; // cuando la puerta esta abierta se aumenta la temperatura de la habitacion
+                        Enfriamiento = Tiempo * Puerta;
+                        Tiempo += Enfriamiento;
+                        EnfriamientotextBox.Text = Enfriamiento.ToString();
                     }
                     break;
                 case 3:
                     {
-                        
+                        aux = (TempAmbiente - TempAire) * (ventana + Puerta); //cuando una ventana y la puerta esta abierta se aumenta la temperatura de la habitacion
+                        Enfriamiento = Tiempo * (ventana + Puerta);
+                        Tiempo += Enfriamiento;
+                        EnfriamientotextBox.Text = Enfriamiento.ToString();
+                    }
+                    break;
+                case 4:
+                    {
 
+                        aux = (TempAmbiente - TempAire); // Temperatura de la habitacion se reduce cuando la puerta y ventana esta cerrada
+                        Enfriamiento = Tiempo;
+                        Tiempo += Enfriamiento;
+                        EnfriamientotextBox.Text = Enfriamiento.ToString();
                     }
                     break;
 

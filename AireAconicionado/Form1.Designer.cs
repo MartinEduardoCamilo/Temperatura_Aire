@@ -33,10 +33,8 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.TempAmbientenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TempAierenumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.TempEscapenumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.VentanacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertacheckBox = new System.Windows.Forms.CheckBox();
@@ -44,10 +42,14 @@
             this.Garficachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Iniciarbutton = new System.Windows.Forms.Button();
             this.Pararbutton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TiemponumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.EnfriamientotextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempEscapenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Garficachart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -68,15 +70,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Temperatura del aire acodicionado";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Temperatura del aire escapandose";
-            // 
             // TempAmbientenumericUpDown
             // 
             this.TempAmbientenumericUpDown.Location = new System.Drawing.Point(16, 47);
@@ -91,17 +84,10 @@
             this.TempAierenumericUpDown.Size = new System.Drawing.Size(65, 20);
             this.TempAierenumericUpDown.TabIndex = 4;
             // 
-            // TempEscapenumericUpDown
-            // 
-            this.TempEscapenumericUpDown.Location = new System.Drawing.Point(19, 151);
-            this.TempEscapenumericUpDown.Name = "TempEscapenumericUpDown";
-            this.TempEscapenumericUpDown.Size = new System.Drawing.Size(65, 20);
-            this.TempEscapenumericUpDown.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 198);
+            this.label4.Location = new System.Drawing.Point(16, 201);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 13);
             this.label4.TabIndex = 6;
@@ -110,7 +96,7 @@
             // VentanacheckBox
             // 
             this.VentanacheckBox.AutoSize = true;
-            this.VentanacheckBox.Location = new System.Drawing.Point(19, 230);
+            this.VentanacheckBox.Location = new System.Drawing.Point(19, 233);
             this.VentanacheckBox.Name = "VentanacheckBox";
             this.VentanacheckBox.Size = new System.Drawing.Size(66, 17);
             this.VentanacheckBox.TabIndex = 7;
@@ -120,7 +106,7 @@
             // PuertacheckBox
             // 
             this.PuertacheckBox.AutoSize = true;
-            this.PuertacheckBox.Location = new System.Drawing.Point(92, 230);
+            this.PuertacheckBox.Location = new System.Drawing.Point(92, 233);
             this.PuertacheckBox.Name = "PuertacheckBox";
             this.PuertacheckBox.Size = new System.Drawing.Size(57, 17);
             this.PuertacheckBox.TabIndex = 8;
@@ -130,7 +116,7 @@
             // PuertaVentanacheckBox
             // 
             this.PuertaVentanacheckBox.AutoSize = true;
-            this.PuertaVentanacheckBox.Location = new System.Drawing.Point(155, 230);
+            this.PuertaVentanacheckBox.Location = new System.Drawing.Point(155, 233);
             this.PuertaVentanacheckBox.Name = "PuertaVentanacheckBox";
             this.PuertaVentanacheckBox.Size = new System.Drawing.Size(108, 17);
             this.PuertaVentanacheckBox.TabIndex = 9;
@@ -172,11 +158,47 @@
             this.Pararbutton.Text = "Parar";
             this.Pararbutton.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Tiempo ";
+            // 
+            // TiemponumericUpDown
+            // 
+            this.TiemponumericUpDown.Location = new System.Drawing.Point(19, 159);
+            this.TiemponumericUpDown.Name = "TiemponumericUpDown";
+            this.TiemponumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.TiemponumericUpDown.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 270);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Tiempo de enfriamiento";
+            // 
+            // EnfriamientotextBox
+            // 
+            this.EnfriamientotextBox.Location = new System.Drawing.Point(139, 270);
+            this.EnfriamientotextBox.Name = "EnfriamientotextBox";
+            this.EnfriamientotextBox.Size = new System.Drawing.Size(100, 20);
+            this.EnfriamientotextBox.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EnfriamientotextBox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.TiemponumericUpDown);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.Pararbutton);
             this.Controls.Add(this.Iniciarbutton);
             this.Controls.Add(this.Garficachart);
@@ -184,10 +206,8 @@
             this.Controls.Add(this.PuertacheckBox);
             this.Controls.Add(this.VentanacheckBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.TempEscapenumericUpDown);
             this.Controls.Add(this.TempAierenumericUpDown);
             this.Controls.Add(this.TempAmbientenumericUpDown);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -195,8 +215,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempEscapenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Garficachart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,10 +226,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown TempAmbientenumericUpDown;
         private System.Windows.Forms.NumericUpDown TempAierenumericUpDown;
-        private System.Windows.Forms.NumericUpDown TempEscapenumericUpDown;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox VentanacheckBox;
         private System.Windows.Forms.CheckBox PuertacheckBox;
@@ -217,6 +235,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart Garficachart;
         private System.Windows.Forms.Button Iniciarbutton;
         private System.Windows.Forms.Button Pararbutton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown TiemponumericUpDown;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox EnfriamientotextBox;
     }
 }
 
