@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TempAmbientenumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -39,7 +38,7 @@
             this.VentanacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertaVentanacheckBox = new System.Windows.Forms.CheckBox();
-            this.Garficachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Graficachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Iniciarbutton = new System.Windows.Forms.Button();
             this.Pararbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +47,7 @@
             this.EnfriamientotextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Garficachart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,21 +122,23 @@
             this.PuertaVentanacheckBox.Text = "Puerta y Ventana";
             this.PuertaVentanacheckBox.UseVisualStyleBackColor = true;
             // 
-            // Garficachart
+            // Graficachart
             // 
             chartArea1.Name = "ChartArea1";
-            this.Garficachart.ChartAreas.Add(chartArea1);
+            this.Graficachart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.Garficachart.Legends.Add(legend1);
-            this.Garficachart.Location = new System.Drawing.Point(269, 12);
-            this.Garficachart.Name = "Garficachart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Garficachart.Series.Add(series1);
-            this.Garficachart.Size = new System.Drawing.Size(519, 394);
-            this.Garficachart.TabIndex = 10;
-            this.Garficachart.Text = "chart1";
+            this.Graficachart.Legends.Add(legend1);
+            this.Graficachart.Location = new System.Drawing.Point(269, 12);
+            this.Graficachart.Name = "Graficachart";
+            this.Graficachart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.Graficachart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Lime,
+        System.Drawing.Color.Aqua,
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))))};
+            this.Graficachart.Size = new System.Drawing.Size(519, 394);
+            this.Graficachart.TabIndex = 10;
+            this.Graficachart.Text = "chart1";
             // 
             // Iniciarbutton
             // 
@@ -163,9 +164,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(96, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Tiempo ";
+            this.label3.Text = "Tiempo en minutos";
             // 
             // TiemponumericUpDown
             // 
@@ -201,7 +202,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Pararbutton);
             this.Controls.Add(this.Iniciarbutton);
-            this.Controls.Add(this.Garficachart);
+            this.Controls.Add(this.Graficachart);
             this.Controls.Add(this.PuertaVentanacheckBox);
             this.Controls.Add(this.PuertacheckBox);
             this.Controls.Add(this.VentanacheckBox);
@@ -215,7 +216,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Garficachart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,7 +233,7 @@
         private System.Windows.Forms.CheckBox VentanacheckBox;
         private System.Windows.Forms.CheckBox PuertacheckBox;
         private System.Windows.Forms.CheckBox PuertaVentanacheckBox;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Garficachart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Graficachart;
         private System.Windows.Forms.Button Iniciarbutton;
         private System.Windows.Forms.Button Pararbutton;
         private System.Windows.Forms.Label label3;

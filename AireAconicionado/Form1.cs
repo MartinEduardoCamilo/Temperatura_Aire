@@ -23,111 +23,102 @@ namespace AireAconicionado
 
         }
 
-        private int Decision()
-        {
-            int numero = 0;
 
-            Random random = new Random();
-            numero = random.Next(1, 4);
-            return numero;
-        }
 
         private void Iniciarbutton_Click(object sender, EventArgs e)
         {
-            
-            switch (Decision())
-            {
-                case 1:
-                    {
-                        VentanacheckBox.Checked = true;
-                        PuertacheckBox.Checked = false;
-                        PuertaVentanacheckBox.Checked = false;
-                        GraficoBarra(Decision());
-                    } break;
-                case 2:
-                    {
-                        PuertacheckBox.Checked = true;
-                        VentanacheckBox.Checked = false;
-                        PuertaVentanacheckBox.Checked = false;
-                        GraficoBarra(Decision());
-                    }
-                    break;
-                case 3:
-                    {
-                        PuertaVentanacheckBox.Checked = true;
-                        PuertacheckBox.Checked = false;
-                        VentanacheckBox.Checked = false;
-                        GraficoBarra(Decision());
-                    }
-                    break;
-                case 4:
-                    {
-                        PuertaVentanacheckBox.Checked = false;
-                        PuertacheckBox.Checked = false;
-                        VentanacheckBox.Checked = false;
-                        GraficoBarra(Decision());
-                    }
-                    break;
 
-                default: break;
+            if (VentanacheckBox.Checked == true)
+            {
+                PuertaVentanacheckBox.Checked = false;
+                PuertacheckBox.Checked = false;
+                GraficoBarra();
+            }
+            else if (PuertacheckBox.Checked == true)
+            {
+                PuertaVentanacheckBox.Checked = false;
+                VentanacheckBox.Checked = false;
+                GraficoBarra();
+            }
+            else if (PuertaVentanacheckBox.Checked == true)
+            {
+                PuertacheckBox.Checked = false;
+                VentanacheckBox.Checked = false;
+                GraficoBarra();
+            }
+            else
+            {
+                PuertaVentanacheckBox.Checked = false;
+                PuertacheckBox.Checked = false;
+                VentanacheckBox.Checked = false;
+                GraficoBarra();
             }
         }
 
 
-        private void GraficoBarra(int numero)
+        private void GraficoBarra()
         {
             const double ventana = 0.10;
             const double Puerta = 0.25;
 
-            int TempAmbiente = (int)TempAierenumericUpDown.Value;
+            int TempAmbiente = (int)TempAmbientenumericUpDown.Value;
             int TempAire = (int)TempAierenumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
 
             double aux = 0;
             double Enfriamiento = 0;
-
-
-            switch (numero)
+           
+            if (VentanacheckBox.Checked == true)
             {
-                case 1:
-                    {
-                        aux = (TempAmbiente - TempAire) * ventana; // cuando una ventana esta abierta se aumenta la temperatura de la habitacion
-                        Enfriamiento = Tiempo * ventana;
-                        Tiempo += Enfriamiento;
-                        EnfriamientotextBox.Text = Enfriamiento.ToString();
-                    }
-                    break;
-                case 2:
-                    {
+                aux = (TempAmbiente - TempAire) * ventana; // cuando una ventana esta abierta se aumenta la temperatura de la habitacion
+                Enfriamiento = Tiempo * ventana;
+                Tiempo += Enfriamiento;
+                EnfriamientotextBox.Text = Enfriamiento.ToString();
+                double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
+                GenerarGrafico(Datos1);
+            }
+            else if (PuertacheckBox.Checked == true)
+            {
+                aux = (TempAmbiente - TempAire) * Puerta; // cuando la puerta esta abierta se aumenta la temperatura de la habitacion
+                Enfriamiento = Tiempo * Puerta;
+                Tiempo += Enfriamiento;
+                EnfriamientotextBox.Text = Enfriamiento.ToString();
+                double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
+                GenerarGrafico(Datos1);
+            }
+            else if (PuertaVentanacheckBox.Checked == true)
+            {
+                aux = (TempAmbiente - TempAire) * (ventana + Puerta); //cuando una ventana y la puerta esta abierta se aumenta la temperatura de la habitacion
+                Enfriamiento = Tiempo * (ventana + Puerta);
+                Tiempo += Enfriamiento;
+                EnfriamientotextBox.Text = Enfriamiento.ToString();
+                double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
+                GenerarGrafico(Datos1);
+            }
+            else
+            {
+                aux = (TempAmbiente - TempAire); // Temperatura de la habitacion se reduce cuando la puerta y ventana esta cerrada
+                Enfriamiento = Tiempo;
+                Tiempo += Enfriamiento;
+                EnfriamientotextBox.Text = Enfriamiento.ToString();
+                double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
+                GenerarGrafico(Datos1);
+            }
 
-                        aux = (TempAmbiente - TempAire) * Puerta; // cuando la puerta esta abierta se aumenta la temperatura de la habitacion
-                        Enfriamiento = Tiempo * Puerta;
-                        Tiempo += Enfriamiento;
-                        EnfriamientotextBox.Text = Enfriamiento.ToString();
-                    }
-                    break;
-                case 3:
-                    {
-                        aux = (TempAmbiente - TempAire) * (ventana + Puerta); //cuando una ventana y la puerta esta abierta se aumenta la temperatura de la habitacion
-                        Enfriamiento = Tiempo * (ventana + Puerta);
-                        Tiempo += Enfriamiento;
-                        EnfriamientotextBox.Text = Enfriamiento.ToString();
-                    }
-                    break;
-                case 4:
-                    {
+        } 
+        
+        private void GenerarGrafico(double[] numero)
+        {
+            string[] serie = { "Temperatura Ambiente", "Temperatura del Aire", "Tiempo de encendido del aire" };
 
-                        aux = (TempAmbiente - TempAire); // Temperatura de la habitacion se reduce cuando la puerta y ventana esta cerrada
-                        Enfriamiento = Tiempo;
-                        Tiempo += Enfriamiento;
-                        EnfriamientotextBox.Text = Enfriamiento.ToString();
-                    }
-                    break;
 
-                default: break;
+            for (int i = 0; i <serie.Length; i++)
+            {
+                Series series = Graficachart.Series.Add(serie[i]);
+                series.Label = numero[i].ToString();
+
+                series.Points.Add(numero[i]);
             }
         }
-
-      
     }
 }
