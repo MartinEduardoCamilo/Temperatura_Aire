@@ -64,10 +64,25 @@ namespace AireAconicionado
             int TempAmbiente = (int)TempAmbientenumericUpDown.Value;
             int TempAire = (int)TempAierenumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
+            
 
             double aux = 0;
             double Enfriamiento = 0;
-           
+
+            if (TempAmbientenumericUpDown.Value <= 17)
+            {
+                errorProvider1.SetError(TempAmbientenumericUpDown, "El numero no puede ser menor a o Igual 17       !!!Ingrese una temperatura Aceptada!!!!");
+            }
+            else if(TempAmbientenumericUpDown.Value > 25)
+            {
+                errorProvider1.SetError(TempAmbientenumericUpDown, "La temperatura aun esta agradable Todavia.. ");
+            }
+
+            if(TempAierenumericUpDown.Value >= 17 || TempAierenumericUpDown.Value <= 21)
+            {
+                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura pasa los 21 grados o menor a 17 grados.");
+            }
+          
             if (VentanacheckBox.Checked == true)
             {
                 aux = (TempAmbiente - TempAire) * ventana; // cuando una ventana esta abierta se aumenta la temperatura de la habitacion
@@ -97,7 +112,7 @@ namespace AireAconicionado
             }
             else
             {
-                aux = (TempAmbiente - TempAire); // Temperatura de la habitacion se reduce cuando la puerta y ventana esta cerrada
+                aux = (TempAmbiente - TempAire); // Temperatura de la habitacion se baja cuando la puerta y ventana esta cerrada
                 Enfriamiento = Tiempo;
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();

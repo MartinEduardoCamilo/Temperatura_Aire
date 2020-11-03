@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,59 +46,67 @@
             this.TiemponumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.EnfriamientotextBox = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 31);
+            this.label1.Location = new System.Drawing.Point(17, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.Size = new System.Drawing.Size(153, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Temperatura Ambiente";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 82);
+            this.label2.Location = new System.Drawing.Point(17, 101);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 13);
+            this.label2.Size = new System.Drawing.Size(229, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Temperatura del aire acodicionado";
             // 
             // TempAmbientenumericUpDown
             // 
-            this.TempAmbientenumericUpDown.Location = new System.Drawing.Point(16, 47);
+            this.TempAmbientenumericUpDown.Location = new System.Drawing.Point(21, 58);
+            this.TempAmbientenumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TempAmbientenumericUpDown.Name = "TempAmbientenumericUpDown";
-            this.TempAmbientenumericUpDown.Size = new System.Drawing.Size(60, 20);
+            this.TempAmbientenumericUpDown.Size = new System.Drawing.Size(80, 22);
             this.TempAmbientenumericUpDown.TabIndex = 3;
             // 
             // TempAierenumericUpDown
             // 
-            this.TempAierenumericUpDown.Location = new System.Drawing.Point(19, 98);
+            this.TempAierenumericUpDown.Location = new System.Drawing.Point(25, 121);
+            this.TempAierenumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TempAierenumericUpDown.Name = "TempAierenumericUpDown";
-            this.TempAierenumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.TempAierenumericUpDown.Size = new System.Drawing.Size(87, 22);
             this.TempAierenumericUpDown.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 201);
+            this.label4.Location = new System.Drawing.Point(21, 247);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 13);
+            this.label4.Size = new System.Drawing.Size(170, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Objetos abierto o cerrado";
             // 
             // VentanacheckBox
             // 
             this.VentanacheckBox.AutoSize = true;
-            this.VentanacheckBox.Location = new System.Drawing.Point(19, 233);
+            this.VentanacheckBox.Location = new System.Drawing.Point(25, 287);
+            this.VentanacheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.VentanacheckBox.Name = "VentanacheckBox";
-            this.VentanacheckBox.Size = new System.Drawing.Size(66, 17);
+            this.VentanacheckBox.Size = new System.Drawing.Size(83, 21);
             this.VentanacheckBox.TabIndex = 7;
             this.VentanacheckBox.Text = "Ventana";
             this.VentanacheckBox.UseVisualStyleBackColor = true;
@@ -105,9 +114,10 @@
             // PuertacheckBox
             // 
             this.PuertacheckBox.AutoSize = true;
-            this.PuertacheckBox.Location = new System.Drawing.Point(92, 233);
+            this.PuertacheckBox.Location = new System.Drawing.Point(123, 287);
+            this.PuertacheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PuertacheckBox.Name = "PuertacheckBox";
-            this.PuertacheckBox.Size = new System.Drawing.Size(57, 17);
+            this.PuertacheckBox.Size = new System.Drawing.Size(72, 21);
             this.PuertacheckBox.TabIndex = 8;
             this.PuertacheckBox.Text = "Puerta";
             this.PuertacheckBox.UseVisualStyleBackColor = true;
@@ -115,9 +125,10 @@
             // PuertaVentanacheckBox
             // 
             this.PuertaVentanacheckBox.AutoSize = true;
-            this.PuertaVentanacheckBox.Location = new System.Drawing.Point(155, 233);
+            this.PuertaVentanacheckBox.Location = new System.Drawing.Point(207, 287);
+            this.PuertaVentanacheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PuertaVentanacheckBox.Name = "PuertaVentanacheckBox";
-            this.PuertaVentanacheckBox.Size = new System.Drawing.Size(108, 17);
+            this.PuertaVentanacheckBox.Size = new System.Drawing.Size(140, 21);
             this.PuertaVentanacheckBox.TabIndex = 9;
             this.PuertaVentanacheckBox.Text = "Puerta y Ventana";
             this.PuertaVentanacheckBox.UseVisualStyleBackColor = true;
@@ -128,7 +139,8 @@
             this.Graficachart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.Graficachart.Legends.Add(legend1);
-            this.Graficachart.Location = new System.Drawing.Point(269, 12);
+            this.Graficachart.Location = new System.Drawing.Point(359, 15);
+            this.Graficachart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Graficachart.Name = "Graficachart";
             this.Graficachart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.Graficachart.PaletteCustomColors = new System.Drawing.Color[] {
@@ -136,15 +148,16 @@
         System.Drawing.Color.Aqua,
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))))};
-            this.Graficachart.Size = new System.Drawing.Size(519, 394);
+            this.Graficachart.Size = new System.Drawing.Size(692, 485);
             this.Graficachart.TabIndex = 10;
             this.Graficachart.Text = "chart1";
             // 
             // Iniciarbutton
             // 
-            this.Iniciarbutton.Location = new System.Drawing.Point(19, 322);
+            this.Iniciarbutton.Location = new System.Drawing.Point(25, 396);
+            this.Iniciarbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Iniciarbutton.Name = "Iniciarbutton";
-            this.Iniciarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Iniciarbutton.Size = new System.Drawing.Size(100, 28);
             this.Iniciarbutton.TabIndex = 11;
             this.Iniciarbutton.Text = "Iniciar";
             this.Iniciarbutton.UseVisualStyleBackColor = true;
@@ -152,9 +165,10 @@
             // 
             // Pararbutton
             // 
-            this.Pararbutton.Location = new System.Drawing.Point(109, 322);
+            this.Pararbutton.Location = new System.Drawing.Point(145, 396);
+            this.Pararbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Pararbutton.Name = "Pararbutton";
-            this.Pararbutton.Size = new System.Drawing.Size(75, 23);
+            this.Pararbutton.Size = new System.Drawing.Size(100, 28);
             this.Pararbutton.TabIndex = 12;
             this.Pararbutton.Text = "Parar";
             this.Pararbutton.UseVisualStyleBackColor = true;
@@ -162,40 +176,48 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 142);
+            this.label3.Location = new System.Drawing.Point(17, 175);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
+            this.label3.Size = new System.Drawing.Size(128, 17);
             this.label3.TabIndex = 13;
             this.label3.Text = "Tiempo en minutos";
             // 
             // TiemponumericUpDown
             // 
-            this.TiemponumericUpDown.Location = new System.Drawing.Point(19, 159);
+            this.TiemponumericUpDown.Location = new System.Drawing.Point(25, 196);
+            this.TiemponumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TiemponumericUpDown.Name = "TiemponumericUpDown";
-            this.TiemponumericUpDown.Size = new System.Drawing.Size(65, 20);
+            this.TiemponumericUpDown.Size = new System.Drawing.Size(87, 22);
             this.TiemponumericUpDown.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 270);
+            this.label5.Location = new System.Drawing.Point(21, 332);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 13);
+            this.label5.Size = new System.Drawing.Size(157, 17);
             this.label5.TabIndex = 15;
             this.label5.Text = "Tiempo de enfriamiento";
             // 
             // EnfriamientotextBox
             // 
-            this.EnfriamientotextBox.Location = new System.Drawing.Point(139, 270);
+            this.EnfriamientotextBox.Location = new System.Drawing.Point(185, 332);
+            this.EnfriamientotextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EnfriamientotextBox.Name = "EnfriamientotextBox";
-            this.EnfriamientotextBox.Size = new System.Drawing.Size(100, 20);
+            this.EnfriamientotextBox.Size = new System.Drawing.Size(132, 22);
             this.EnfriamientotextBox.TabIndex = 16;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.EnfriamientotextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TiemponumericUpDown);
@@ -211,6 +233,7 @@
             this.Controls.Add(this.TempAmbientenumericUpDown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -218,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +264,7 @@
         private System.Windows.Forms.NumericUpDown TiemponumericUpDown;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox EnfriamientotextBox;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
