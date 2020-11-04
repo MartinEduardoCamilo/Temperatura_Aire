@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 namespace AireAconicionado
@@ -23,48 +25,22 @@ namespace AireAconicionado
 
         }
 
-
-
         private void Iniciarbutton_Click(object sender, EventArgs e)
         {
-
-            if (VentanacheckBox.Checked == true)
-            {
-                PuertaVentanacheckBox.Checked = false;
-                PuertacheckBox.Checked = false;
-                GraficoBarra();
-            }
-            else if (PuertacheckBox.Checked == true)
-            {
-                PuertaVentanacheckBox.Checked = false;
-                VentanacheckBox.Checked = false;
-                GraficoBarra();
-            }
-            else if (PuertaVentanacheckBox.Checked == true)
-            {
-                PuertacheckBox.Checked = false;
-                VentanacheckBox.Checked = false;
-                GraficoBarra();
-            }
-            else
-            {
-                PuertaVentanacheckBox.Checked = false;
-                PuertacheckBox.Checked = false;
-                VentanacheckBox.Checked = false;
-                GraficoBarra();
-            }
-        }
-
-
-        private void GraficoBarra()
-        {
-            const double ventana = 0.10;
-            const double Puerta = 0.25;
-
             int TempAmbiente = (int)TempAmbientenumericUpDown.Value;
             int TempAire = (int)TempAierenumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
-            
+
+            GraficoBarra(TempAmbiente,TempAire,Tiempo);
+        }
+
+
+        private void GraficoBarra(int TempAmbiente, int TempAire,double Tiempo)
+        {
+            const double ventana = 0.10;
+            const double Puerta = 0.25;
+             
+            int setime = Convert.ToInt32(TiemponumericUpDown.Value) * 1000;
 
             double aux = 0;
             double Enfriamiento = 0;
@@ -86,7 +62,7 @@ namespace AireAconicionado
             if (VentanacheckBox.Checked == true)
             {
                 aux = (TempAmbiente - TempAire) * ventana; // cuando una ventana esta abierta se aumenta la temperatura de la habitacion
-                Enfriamiento = Tiempo * ventana;
+                Enfriamiento = (Tiempo * ventana)+Tiempo;
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
@@ -95,7 +71,7 @@ namespace AireAconicionado
             else if (PuertacheckBox.Checked == true)
             {
                 aux = (TempAmbiente - TempAire) * Puerta; // cuando la puerta esta abierta se aumenta la temperatura de la habitacion
-                Enfriamiento = Tiempo * Puerta;
+                Enfriamiento = (Tiempo * Puerta)+Tiempo;
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
@@ -104,7 +80,7 @@ namespace AireAconicionado
             else if (PuertaVentanacheckBox.Checked == true)
             {
                 aux = (TempAmbiente - TempAire) * (ventana + Puerta); //cuando una ventana y la puerta esta abierta se aumenta la temperatura de la habitacion
-                Enfriamiento = Tiempo * (ventana + Puerta);
+                Enfriamiento = (Tiempo * (ventana + Puerta)) + Tiempo;
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 double[] Datos1 = { TempAmbiente, TempAire, Enfriamiento };
@@ -126,14 +102,30 @@ namespace AireAconicionado
         {
             string[] serie = { "Temperatura Ambiente", "Temperatura del Aire", "Tiempo de encendido del aire" };
 
-
             for (int i = 0; i <serie.Length; i++)
             {
                 Series series = Graficachart.Series.Add(serie[i]);
                 series.Label = numero[i].ToString();
-
                 series.Points.Add(numero[i]);
             }
+        }
+
+        private void VentanacheckBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            PuertacheckBox.Checked = false;
+            PuertaVentanacheckBox.Checked = false;
+        }
+
+        private void PuertacheckBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            VentanacheckBox.Checked = false;
+            PuertaVentanacheckBox.Checked = false;
+        }
+
+        private void PuertaVentanacheckBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            VentanacheckBox.Checked = false;
+            PuertacheckBox.Checked = false;
         }
     }
 }
