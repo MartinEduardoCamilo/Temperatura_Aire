@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TempAmbientenumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -39,19 +37,20 @@
             this.VentanacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertaVentanacheckBox = new System.Windows.Forms.CheckBox();
-            this.Graficachart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Iniciarbutton = new System.Windows.Forms.Button();
-            this.Pararbutton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.TiemponumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.EnfriamientotextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Generarbutton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.IniciarcheckBox = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -128,43 +127,6 @@
             this.PuertaVentanacheckBox.UseVisualStyleBackColor = true;
             this.PuertaVentanacheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PuertaVentanacheckBox_MouseClick);
             // 
-            // Graficachart
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.Graficachart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Graficachart.Legends.Add(legend3);
-            this.Graficachart.Location = new System.Drawing.Point(269, 12);
-            this.Graficachart.Name = "Graficachart";
-            this.Graficachart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.Graficachart.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Lime,
-        System.Drawing.Color.Aqua,
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))))};
-            this.Graficachart.Size = new System.Drawing.Size(519, 394);
-            this.Graficachart.TabIndex = 10;
-            this.Graficachart.Text = "chart1";
-            // 
-            // Iniciarbutton
-            // 
-            this.Iniciarbutton.Location = new System.Drawing.Point(19, 322);
-            this.Iniciarbutton.Name = "Iniciarbutton";
-            this.Iniciarbutton.Size = new System.Drawing.Size(75, 23);
-            this.Iniciarbutton.TabIndex = 11;
-            this.Iniciarbutton.Text = "Iniciar";
-            this.Iniciarbutton.UseVisualStyleBackColor = true;
-            this.Iniciarbutton.Click += new System.EventHandler(this.Iniciarbutton_Click);
-            // 
-            // Pararbutton
-            // 
-            this.Pararbutton.Location = new System.Drawing.Point(109, 322);
-            this.Pararbutton.Name = "Pararbutton";
-            this.Pararbutton.Size = new System.Drawing.Size(75, 23);
-            this.Pararbutton.TabIndex = 12;
-            this.Pararbutton.Text = "Parar";
-            this.Pararbutton.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -201,18 +163,51 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // Generarbutton
+            // 
+            this.Generarbutton.Location = new System.Drawing.Point(9, 322);
+            this.Generarbutton.Name = "Generarbutton";
+            this.Generarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Generarbutton.TabIndex = 17;
+            this.Generarbutton.Text = "Generar";
+            this.Generarbutton.UseVisualStyleBackColor = true;
+            this.Generarbutton.Click += new System.EventHandler(this.Generarbutton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // IniciarcheckBox
+            // 
+            this.IniciarcheckBox.AutoSize = true;
+            this.IniciarcheckBox.Location = new System.Drawing.Point(104, 326);
+            this.IniciarcheckBox.Name = "IniciarcheckBox";
+            this.IniciarcheckBox.Size = new System.Drawing.Size(51, 17);
+            this.IniciarcheckBox.TabIndex = 18;
+            this.IniciarcheckBox.Text = "Inicio";
+            this.IniciarcheckBox.UseVisualStyleBackColor = true;
+            this.IniciarcheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.IniciarcheckBox_MouseClick);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(314, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(432, 290);
+            this.dataGridView1.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.IniciarcheckBox);
+            this.Controls.Add(this.Generarbutton);
             this.Controls.Add(this.EnfriamientotextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TiemponumericUpDown);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Pararbutton);
-            this.Controls.Add(this.Iniciarbutton);
-            this.Controls.Add(this.Graficachart);
             this.Controls.Add(this.PuertaVentanacheckBox);
             this.Controls.Add(this.PuertacheckBox);
             this.Controls.Add(this.VentanacheckBox);
@@ -226,9 +221,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TempAmbientenumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempAierenumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Graficachart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,14 +239,15 @@
         private System.Windows.Forms.CheckBox VentanacheckBox;
         private System.Windows.Forms.CheckBox PuertacheckBox;
         private System.Windows.Forms.CheckBox PuertaVentanacheckBox;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Graficachart;
-        private System.Windows.Forms.Button Iniciarbutton;
-        private System.Windows.Forms.Button Pararbutton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown TiemponumericUpDown;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox EnfriamientotextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button Generarbutton;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox IniciarcheckBox;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
