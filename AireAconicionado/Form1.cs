@@ -199,5 +199,21 @@ namespace AireAconicionado
 
             
         }
+
+        private void Limpiarbutton1_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();          
+            dataGridView1.Rows.Clear();
+            TiemponumericUpDown.Value = 0;
+            TempAmbientenumericUpDown.Value = 0;
+            TempAierenumericUpDown.Value = 0;
+            EnfriamientotextBox.Text = String.Empty;
+            VentanacheckBox.Checked = false;
+            PuertacheckBox.Checked = false;
+            PuertaVentanacheckBox.Checked = false;
+          
+        }
+
+      
     }
 }
