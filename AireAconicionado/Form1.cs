@@ -22,12 +22,12 @@ namespace AireAconicionado
         {
             InitializeComponent();
             DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
-            c1.HeaderText = "Temperatura Ambiente";
+            c1.HeaderText = "Temperatura de encendido del aire";
             c1.Width = 130;
             c1.ReadOnly = true;
 
             DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
-            c2.HeaderText = "Temperatura del aire";
+            c2.HeaderText = "Temperatura de apagdo del aire";
             c2.Width = 100;
             c2.ReadOnly = true;
 
@@ -51,8 +51,8 @@ namespace AireAconicionado
         private void Generarbutton_Click(object sender, EventArgs e)
         {
 
-            int TempAmbiente = (int)TempAmbientenumericUpDown.Value;
-            int TempAire = (int)TempAierenumericUpDown.Value;
+            int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
+            int TempAire = (int)TempApagadonumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
 
 
@@ -64,7 +64,6 @@ namespace AireAconicionado
 
         private void Calcular(int TempAmbiente, int TempAire, double Tiempo)
         {
-            IniciarcheckBox.Checked = true;
 
             const double ventana = 0.10;
             const double Puerta = 0.25;
@@ -82,66 +81,108 @@ namespace AireAconicionado
                 TiemponumericUpDown.Focus();
             }
 
-            if (TempAmbientenumericUpDown.Value <= 17)
+            if (TempEncendidonumericUpDown.Value <= 17)
             {
-                errorProvider1.SetError(TempAmbientenumericUpDown, "Esta temperatura no puede ser menor de 25 grados!!!!");
-                TempAmbientenumericUpDown.Focus();
+                errorProvider1.SetError(TempEncendidonumericUpDown, "Esta temperatura no puede ser menor de 25 grados!!!!");
+                TempEncendidonumericUpDown.Focus();
             }
-            else if (TempAmbientenumericUpDown.Value < 25)
+            else if (TempEncendidonumericUpDown.Value < 25)
             {
-                errorProvider1.SetError(TempAmbientenumericUpDown, "La temperatura aun esta agradable Todavia debe ser mayor a 25.. ");
-                TempAmbientenumericUpDown.Focus();
+                errorProvider1.SetError(TempEncendidonumericUpDown, "La temperatura aun esta agradable Todavia debe ser mayor a 25.. ");
+                TempEncendidonumericUpDown.Focus();
             }
 
-            if (TempAierenumericUpDown.Value <= 16)
+            if (TempApagadonumericUpDown.Value <= 16)
             {
-                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura debe ser mayor a 16 Grados..");
-                TempAierenumericUpDown.Focus();
+                errorProvider1.SetError(TempApagadonumericUpDown, "Esta temperatura debe ser mayor a 16 Grados..");
+                TempApagadonumericUpDown.Focus();
             }
-            else if (TempAierenumericUpDown.Value > 21)
+            else if (TempApagadonumericUpDown.Value > 21)
             {
-                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura pasa los 21 grados..");
-                TempAierenumericUpDown.Focus();
+                errorProvider1.SetError(TempApagadonumericUpDown, "Esta temperatura pasa los 21 grados..");
+                TempApagadonumericUpDown.Focus();
             }
 
             if (VentanacheckBox.Checked == true)
             {
-               
                 Enfriamiento = Tiempo - (Tiempo * ventana);
-                convertir(Enfriamiento);
                 Tiempo += Enfriamiento;
+
+                convertir(Enfriamiento);
+
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
-                dataGridView1.Rows.Add(TempAmbiente,TempAire,Enfriamiento);
-                dataGridView1.Rows.Clear();
+
+                if (aux < TempAmbiente && aux > 0)
+                {
+                    TempAmbiente = aux;
+                }
+                aux = TempAmbiente - 1;
+
+                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
+
+                if (aux == TempAire)
+                {
+                    Times.Stop();
+                    Desactivar();
+                }
 
             }
             else if (PuertacheckBox.Checked == true)
             {
-                
-                Enfriamiento = Tiempo- (Tiempo * Puerta);
+                Enfriamiento = Tiempo - (Tiempo * Puerta);
                 Tiempo += Enfriamiento;
+                convertir(Enfriamiento);
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
-                dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
-                dataGridView1.Rows.Clear();
+                if (aux < TempAmbiente && aux > 0)
+                {
+                    TempAmbiente = aux;
+                }
+                aux = TempAmbiente - 1;
+                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
+                if (aux == TempAire)
+                {
+                    Times.Stop();
+                    Desactivar();
+                }
             }
             else if (PuertaVentanacheckBox.Checked == true)
             {
-                
-                Enfriamiento =  Tiempo - (Tiempo * (ventana + Puerta));
+                Enfriamiento = Tiempo - (Tiempo * (ventana + Puerta));
                 Tiempo += Enfriamiento;
+                convertir(Enfriamiento);
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
-                dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
-                dataGridView1.Rows.Clear();
+                if (aux < TempAmbiente && aux > 0)
+                {
+                    TempAmbiente = aux;
+                }
+                aux = TempAmbiente - 1;
+                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
+                if (aux == TempAire)
+                {
+                    Times.Stop();
+                    Desactivar();
+                }
             }
             else
             {
-                
                 Enfriamiento = Tiempo;
                 Tiempo += Enfriamiento;
+                convertir(Enfriamiento);
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
-                dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
-                dataGridView1.Rows.Clear();
-            }          
+                if (aux < TempAmbiente && aux > 0)
+                {
+                    TempAmbiente = aux;
+                }
+                aux = TempAmbiente - 1;
+                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
+                if (aux == TempAire)
+                {
+                    Times.Stop();
+                    Desactivar();
+
+                }
+            }
+
         } 
         
         private void VentanacheckBox_MouseClick(object sender, MouseEventArgs e)
@@ -150,8 +191,8 @@ namespace AireAconicionado
             PuertaVentanacheckBox.Checked = false;
             dataGridView1.Rows.Clear();
             aux = 0;
-            TempAmbientenumericUpDown.ReadOnly = false;
-            TempAmbientenumericUpDown.Increment = 1;
+            TempEncendidonumericUpDown.ReadOnly = false;
+            TempEncendidonumericUpDown.Increment = 1;
         }
 
         private void PuertacheckBox_MouseClick(object sender, MouseEventArgs e)
@@ -160,8 +201,8 @@ namespace AireAconicionado
             PuertaVentanacheckBox.Checked = false;
             dataGridView1.Rows.Clear();
             aux = 0;
-            TempAmbientenumericUpDown.ReadOnly = false;
-            TempAmbientenumericUpDown.Increment = 1;
+            TempEncendidonumericUpDown.ReadOnly = false;
+            TempEncendidonumericUpDown.Increment = 1;
         }
 
         private void PuertaVentanacheckBox_MouseClick(object sender, MouseEventArgs e)
@@ -170,102 +211,28 @@ namespace AireAconicionado
             PuertacheckBox.Checked = false;
             dataGridView1.Rows.Clear();
             aux = 0;
-            TempAmbientenumericUpDown.ReadOnly = false;
-            TempAmbientenumericUpDown.Increment = 1;
+            TempEncendidonumericUpDown.ReadOnly = false;
+            TempEncendidonumericUpDown.Increment = 1;
         }
 
         private void IniciarcheckBox_MouseClick(object sender, MouseEventArgs e)
         {
             
-            timer1.Start();
-            EncendidocheckBox.Checked = true;
-            ApagadocheckBox.Checked = false;     
+            if(IniciarcheckBox.Checked == true)
+            {
+                Times.Start();
+                EncendidocheckBox.Checked = true;
+                ApagadocheckBox.Checked = false;
+            }  
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int TempAmbiente = (int)TempAmbientenumericUpDown.Value;
-            int TempAire = (int)TempAierenumericUpDown.Value;
+            int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
+            int TempAire = (int)TempApagadonumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
 
-            const double ventana = 0.10;
-            const double Puerta = 0.25;
-            double Enfriamiento = 0;
-
-
-            if (VentanacheckBox.Checked == true)
-            {
-                Enfriamiento = Tiempo - (Tiempo * ventana);
-                Tiempo += Enfriamiento;
-                EnfriamientotextBox.Text = Enfriamiento.ToString();
-
-                if (aux < TempAmbiente && aux > 0)
-                {
-                    TempAmbiente = aux;
-                }
-                aux = TempAmbiente - 1;
-
-                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
-
-                if (aux == TempAire)
-                {
-                    timer1.Stop();
-                    Desactivar();                   
-                }
-
-            }
-            else if (PuertacheckBox.Checked == true)
-            {
-                Enfriamiento =   Tiempo - (Tiempo * Puerta);
-                Tiempo += Enfriamiento;
-                EnfriamientotextBox.Text = Enfriamiento.ToString();
-                if (aux < TempAmbiente && aux > 0)
-                {
-                    TempAmbiente = aux;
-                }
-                aux = TempAmbiente - 1;
-                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
-                if (aux == TempAire)
-                {
-                    timer1.Stop();
-                    Desactivar();
-                }
-            }
-            else if (PuertaVentanacheckBox.Checked == true)
-            {
-                Enfriamiento =  Tiempo- (Tiempo * (ventana + Puerta));
-                Tiempo += Enfriamiento;
-                EnfriamientotextBox.Text = Enfriamiento.ToString();
-                if (aux < TempAmbiente && aux > 0)
-                {
-                    TempAmbiente = aux;
-                }
-                aux = TempAmbiente - 1;
-                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
-                if (aux == TempAire)
-                {
-                    timer1.Stop();
-                    Desactivar();
-                }
-            }
-            else
-            {
-                Enfriamiento = Tiempo;
-                Tiempo += Enfriamiento;
-                EnfriamientotextBox.Text = Enfriamiento.ToString();
-                if (aux < TempAmbiente && aux > 0)
-                {
-                    TempAmbiente = aux;
-                }
-                aux = TempAmbiente - 1;
-                dataGridView1.Rows.Add(aux, TempAire, Enfriamiento);
-                if (aux == TempAire)
-                {
-                    timer1.Stop();
-                    Desactivar();
-
-                }
-            }
+            Calcular(TempAmbiente, TempAire, Tiempo);
         }
         
         private void Limpiarbutton1_Click(object sender, EventArgs e)
@@ -273,8 +240,8 @@ namespace AireAconicionado
             errorProvider1.Clear();          
             dataGridView1.Rows.Clear();
             TiemponumericUpDown.Value = 0;
-            TempAmbientenumericUpDown.Value = 0;
-            TempAierenumericUpDown.Value = 0;
+            TempEncendidonumericUpDown.Value = 0;
+            TempApagadonumericUpDown.Value = 0;
             EnfriamientotextBox.Text = String.Empty;
             VentanacheckBox.Checked = false;
             PuertacheckBox.Checked = false;
@@ -285,23 +252,24 @@ namespace AireAconicionado
         private void Desactivar()
         {
             
-            TempAmbientenumericUpDown.ReadOnly = true;
-            TempAmbientenumericUpDown.Value = aux;
-            TempAmbientenumericUpDown.Increment = 0;
+            TempEncendidonumericUpDown.ReadOnly = true;
+            TempEncendidonumericUpDown.Value = aux;
+            TempEncendidonumericUpDown.Increment = 0;
             ApagadocheckBox.Checked = true;
             EncendidocheckBox.Checked = false;
             IniciarcheckBox.Checked = false;
             VentanacheckBox.Checked = false;
             PuertacheckBox.Checked = false;
             PuertaVentanacheckBox.Checked = false;
+            EnfriamientotextBox.Text = String.Empty;
         }
 
 
         private void convertir(double Tiempo)
         {
-            int n = ((int)Tiempo) * 1000000;
+            int n = ((int)Tiempo) * 1000;
 
-            timer1.Interval = n;
+            Times.Interval = n;
         }
 
     }
