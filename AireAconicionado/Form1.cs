@@ -23,17 +23,17 @@ namespace AireAconicionado
             InitializeComponent();
             DataGridViewTextBoxColumn c1 = new DataGridViewTextBoxColumn();
             c1.HeaderText = "Temperatura Ambiente";
-            c1.Width = 90;
+            c1.Width = 130;
             c1.ReadOnly = true;
 
             DataGridViewTextBoxColumn c2 = new DataGridViewTextBoxColumn();
             c2.HeaderText = "Temperatura del aire";
-            c2.Width = 90;
+            c2.Width = 100;
             c2.ReadOnly = true;
 
             DataGridViewTextBoxColumn c3 = new DataGridViewTextBoxColumn();
             c3.HeaderText = "Tiempo";
-            c3.Width = 25;
+            c3.Width = 90;
             c3.ReadOnly = true;
 
             dataGridView1.Columns.Add(c1);
@@ -58,7 +58,8 @@ namespace AireAconicionado
 
             Calcular(TempAmbiente, TempAire, Tiempo);
 
-            IniciarcheckBox.Enabled = true;
+            IniciarcheckBox.Enabled = true;            
+            
         }
 
         private void Calcular(int TempAmbiente, int TempAire, double Tiempo)
@@ -70,21 +71,38 @@ namespace AireAconicionado
 
             double Enfriamiento = 0;
 
+            if (TiemponumericUpDown.Value  > 15  )
+            {
+                errorProvider1.SetError(TiemponumericUpDown, "El tiempo debe ser menor 15.. ");
+                TiemponumericUpDown.Focus();
+            }
+            else if(TiemponumericUpDown.Value <= 0)
+            {
+                errorProvider1.SetError(TiemponumericUpDown, "El tiempo debe ser mayor que !Cero!");
+                TiemponumericUpDown.Focus();
+            }
 
             if (TempAmbientenumericUpDown.Value <= 17)
             {
-                errorProvider1.SetError(TempAmbientenumericUpDown, "El numero no puede ser menor a o Igual 17       !!!Ingrese una temperatura Aceptada!!!!");
+                errorProvider1.SetError(TempAmbientenumericUpDown, "Esta temperatura no puede ser menor de 25 grados!!!!");
+                TempAmbientenumericUpDown.Focus();
             }
-            else if (TempAmbientenumericUpDown.Value > 25)
+            else if (TempAmbientenumericUpDown.Value < 25)
             {
-                errorProvider1.SetError(TempAmbientenumericUpDown, "La temperatura aun esta agradable Todavia.. ");
+                errorProvider1.SetError(TempAmbientenumericUpDown, "La temperatura aun esta agradable Todavia debe ser mayor a 25.. ");
+                TempAmbientenumericUpDown.Focus();
             }
 
-            if (TempAierenumericUpDown.Value >= 17 || TempAierenumericUpDown.Value <= 21)
+            if (TempAierenumericUpDown.Value <= 16)
             {
-                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura pasa los 21 grados o menor a 17 grados.");
+                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura debe ser mayor a 16 Grados..");
+                TempAierenumericUpDown.Focus();
             }
-
+            else if (TempAierenumericUpDown.Value > 21)
+            {
+                errorProvider1.SetError(TempAierenumericUpDown, "Esta temperatura pasa los 21 grados..");
+                TempAierenumericUpDown.Focus();
+            }
 
             if (VentanacheckBox.Checked == true)
             {
@@ -94,7 +112,8 @@ namespace AireAconicionado
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 dataGridView1.Rows.Add(TempAmbiente,TempAire,Enfriamiento);
-                               
+                dataGridView1.Rows.Clear();
+
             }
             else if (PuertacheckBox.Checked == true)
             {
@@ -103,6 +122,7 @@ namespace AireAconicionado
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
+                dataGridView1.Rows.Clear();
             }
             else if (PuertaVentanacheckBox.Checked == true)
             {
@@ -111,6 +131,7 @@ namespace AireAconicionado
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
+                dataGridView1.Rows.Clear();
             }
             else
             {
@@ -119,11 +140,10 @@ namespace AireAconicionado
                 Tiempo += Enfriamiento;
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
                 dataGridView1.Rows.Add(TempAmbiente, TempAire, Enfriamiento);
+                dataGridView1.Rows.Clear();
             }          
         } 
         
- 
-
         private void VentanacheckBox_MouseClick(object sender, MouseEventArgs e)
         {
             PuertacheckBox.Checked = false;
@@ -246,8 +266,6 @@ namespace AireAconicionado
 
                 }
             }
-
-
         }
         
         private void Limpiarbutton1_Click(object sender, EventArgs e)
@@ -277,13 +295,14 @@ namespace AireAconicionado
             PuertacheckBox.Checked = false;
             PuertaVentanacheckBox.Checked = false;
         }
-      
+
 
         private void convertir(double Tiempo)
         {
-            int n = ((int)Tiempo) * 1000;
+            int n = ((int)Tiempo) * 1000000;
 
             timer1.Interval = n;
         }
+
     }
 }
