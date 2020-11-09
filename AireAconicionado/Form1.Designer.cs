@@ -31,34 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TempEncendidonumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.TempApagadonumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.VentanacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertacheckBox = new System.Windows.Forms.CheckBox();
             this.PuertaVentanacheckBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TiemponumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.EnfriamientotextBox = new System.Windows.Forms.TextBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Generarbutton = new System.Windows.Forms.Button();
-            this.Times = new System.Windows.Forms.Timer(this.components);
-            this.IniciarcheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Limpiarbutton1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.EncendidocheckBox = new System.Windows.Forms.CheckBox();
             this.ApagadocheckBox = new System.Windows.Forms.CheckBox();
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.TempEncendidonumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempApagadonumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.SuspencioncheckBox = new System.Windows.Forms.CheckBox();
+            this.TempEncendidotextBox = new System.Windows.Forms.TextBox();
+            this.TempApagadotextBox = new System.Windows.Forms.TextBox();
+            this.TiempotextBox = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Iniciarbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,9 +57,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 13);
+            this.label1.Size = new System.Drawing.Size(181, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Temperatura de Encendido del Aire";
+            this.label1.Text = "Temperatura detectada por el sensor";
             // 
             // label2
             // 
@@ -78,20 +69,6 @@
             this.label2.Size = new System.Drawing.Size(169, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Temperatura de Apagado del Aire ";
-            // 
-            // TempEncendidonumericUpDown
-            // 
-            this.TempEncendidonumericUpDown.Location = new System.Drawing.Point(16, 47);
-            this.TempEncendidonumericUpDown.Name = "TempEncendidonumericUpDown";
-            this.TempEncendidonumericUpDown.Size = new System.Drawing.Size(60, 20);
-            this.TempEncendidonumericUpDown.TabIndex = 3;
-            // 
-            // TempApagadonumericUpDown
-            // 
-            this.TempApagadonumericUpDown.Location = new System.Drawing.Point(19, 98);
-            this.TempApagadonumericUpDown.Name = "TempApagadonumericUpDown";
-            this.TempApagadonumericUpDown.Size = new System.Drawing.Size(57, 20);
-            this.TempApagadonumericUpDown.TabIndex = 4;
             // 
             // label4
             // 
@@ -144,13 +121,6 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Tiempo en segundos";
             // 
-            // TiemponumericUpDown
-            // 
-            this.TiemponumericUpDown.Location = new System.Drawing.Point(19, 159);
-            this.TiemponumericUpDown.Name = "TiemponumericUpDown";
-            this.TiemponumericUpDown.Size = new System.Drawing.Size(57, 20);
-            this.TiemponumericUpDown.TabIndex = 14;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -167,35 +137,6 @@
             this.EnfriamientotextBox.Size = new System.Drawing.Size(100, 20);
             this.EnfriamientotextBox.TabIndex = 16;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // Generarbutton
-            // 
-            this.Generarbutton.Location = new System.Drawing.Point(9, 322);
-            this.Generarbutton.Name = "Generarbutton";
-            this.Generarbutton.Size = new System.Drawing.Size(75, 36);
-            this.Generarbutton.TabIndex = 17;
-            this.Generarbutton.Text = "Conectar";
-            this.Generarbutton.UseVisualStyleBackColor = true;
-            this.Generarbutton.Click += new System.EventHandler(this.Generarbutton_Click);
-            // 
-            // Times
-            // 
-            this.Times.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // IniciarcheckBox
-            // 
-            this.IniciarcheckBox.AutoSize = true;
-            this.IniciarcheckBox.Location = new System.Drawing.Point(177, 322);
-            this.IniciarcheckBox.Name = "IniciarcheckBox";
-            this.IniciarcheckBox.Size = new System.Drawing.Size(63, 17);
-            this.IniciarcheckBox.TabIndex = 18;
-            this.IniciarcheckBox.Text = "Prender";
-            this.IniciarcheckBox.UseVisualStyleBackColor = true;
-            this.IniciarcheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.IniciarcheckBox_MouseClick);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -206,31 +147,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(377, 290);
             this.dataGridView1.TabIndex = 19;
             // 
-            // Limpiarbutton1
-            // 
-            this.Limpiarbutton1.Location = new System.Drawing.Point(10, 379);
-            this.Limpiarbutton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Limpiarbutton1.Name = "Limpiarbutton1";
-            this.Limpiarbutton1.Size = new System.Drawing.Size(74, 35);
-            this.Limpiarbutton1.TabIndex = 20;
-            this.Limpiarbutton1.Text = "Limpiar";
-            this.Limpiarbutton1.UseVisualStyleBackColor = true;
-            this.Limpiarbutton1.Click += new System.EventHandler(this.Limpiarbutton1_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "label6";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(344, 344);
+            this.label7.Location = new System.Drawing.Point(13, 313);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
@@ -249,8 +169,8 @@
             // EncendidocheckBox
             // 
             this.EncendidocheckBox.AutoSize = true;
-            this.EncendidocheckBox.Location = new System.Drawing.Point(346, 379);
-            this.EncendidocheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EncendidocheckBox.Location = new System.Drawing.Point(16, 345);
+            this.EncendidocheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.EncendidocheckBox.Name = "EncendidocheckBox";
             this.EncendidocheckBox.Size = new System.Drawing.Size(77, 17);
             this.EncendidocheckBox.TabIndex = 25;
@@ -260,53 +180,83 @@
             // ApagadocheckBox
             // 
             this.ApagadocheckBox.AutoSize = true;
-            this.ApagadocheckBox.Location = new System.Drawing.Point(346, 417);
-            this.ApagadocheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ApagadocheckBox.Location = new System.Drawing.Point(97, 345);
+            this.ApagadocheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.ApagadocheckBox.Name = "ApagadocheckBox";
             this.ApagadocheckBox.Size = new System.Drawing.Size(69, 17);
             this.ApagadocheckBox.TabIndex = 26;
             this.ApagadocheckBox.Text = "Apagado";
             this.ApagadocheckBox.UseVisualStyleBackColor = true;
             // 
-            // errorProvider2
+            // SuspencioncheckBox
             // 
-            this.errorProvider2.ContainerControl = this;
+            this.SuspencioncheckBox.AutoSize = true;
+            this.SuspencioncheckBox.Location = new System.Drawing.Point(171, 345);
+            this.SuspencioncheckBox.Name = "SuspencioncheckBox";
+            this.SuspencioncheckBox.Size = new System.Drawing.Size(82, 17);
+            this.SuspencioncheckBox.TabIndex = 27;
+            this.SuspencioncheckBox.Text = "Suspención";
+            this.SuspencioncheckBox.UseVisualStyleBackColor = true;
+            // 
+            // TempEncendidotextBox
+            // 
+            this.TempEncendidotextBox.Location = new System.Drawing.Point(19, 48);
+            this.TempEncendidotextBox.Name = "TempEncendidotextBox";
+            this.TempEncendidotextBox.Size = new System.Drawing.Size(100, 20);
+            this.TempEncendidotextBox.TabIndex = 28;
+            // 
+            // TempApagadotextBox
+            // 
+            this.TempApagadotextBox.Location = new System.Drawing.Point(19, 109);
+            this.TempApagadotextBox.Name = "TempApagadotextBox";
+            this.TempApagadotextBox.Size = new System.Drawing.Size(100, 20);
+            this.TempApagadotextBox.TabIndex = 29;
+            // 
+            // TiempotextBox
+            // 
+            this.TiempotextBox.Location = new System.Drawing.Point(19, 171);
+            this.TiempotextBox.Name = "TiempotextBox";
+            this.TiempotextBox.Size = new System.Drawing.Size(100, 20);
+            this.TiempotextBox.TabIndex = 30;
+            // 
+            // Iniciarbutton
+            // 
+            this.Iniciarbutton.Location = new System.Drawing.Point(346, 345);
+            this.Iniciarbutton.Name = "Iniciarbutton";
+            this.Iniciarbutton.Size = new System.Drawing.Size(75, 23);
+            this.Iniciarbutton.TabIndex = 31;
+            this.Iniciarbutton.Text = "Iniciar";
+            this.Iniciarbutton.UseVisualStyleBackColor = true;
+            this.Iniciarbutton.Click += new System.EventHandler(this.Iniciarbutton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 450);
+            this.Controls.Add(this.Iniciarbutton);
+            this.Controls.Add(this.TiempotextBox);
+            this.Controls.Add(this.TempApagadotextBox);
+            this.Controls.Add(this.TempEncendidotextBox);
+            this.Controls.Add(this.SuspencioncheckBox);
             this.Controls.Add(this.ApagadocheckBox);
             this.Controls.Add(this.EncendidocheckBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.Limpiarbutton1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.IniciarcheckBox);
-            this.Controls.Add(this.Generarbutton);
             this.Controls.Add(this.EnfriamientotextBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.TiemponumericUpDown);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.PuertaVentanacheckBox);
             this.Controls.Add(this.PuertacheckBox);
             this.Controls.Add(this.VentanacheckBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.TempApagadonumericUpDown);
-            this.Controls.Add(this.TempEncendidonumericUpDown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.TempEncendidonumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TempApagadonumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,28 +266,24 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown TempEncendidonumericUpDown;
-        private System.Windows.Forms.NumericUpDown TempApagadonumericUpDown;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox VentanacheckBox;
         private System.Windows.Forms.CheckBox PuertacheckBox;
         private System.Windows.Forms.CheckBox PuertaVentanacheckBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown TiemponumericUpDown;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox EnfriamientotextBox;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button Generarbutton;
-        private System.Windows.Forms.Timer Times;
-        private System.Windows.Forms.CheckBox IniciarcheckBox;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button Limpiarbutton1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox ApagadocheckBox;
         private System.Windows.Forms.CheckBox EncendidocheckBox;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.CheckBox SuspencioncheckBox;
+        private System.Windows.Forms.TextBox TempEncendidotextBox;
+        private System.Windows.Forms.TextBox TempApagadotextBox;
+        private System.Windows.Forms.TextBox TiempotextBox;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button Iniciarbutton;
     }
 }
 
