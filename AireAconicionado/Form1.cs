@@ -18,6 +18,8 @@ namespace AireAconicionado
 
         private int Acumulador_Temp { get; set; }
         private double Acumulador { get; set; }
+
+        public int contador { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -46,64 +48,30 @@ namespace AireAconicionado
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            
+                    
         }
 
         private void Generarbutton_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
 
-            int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
-            int TempAire = (int)TempApagadonumericUpDown.Value;
-            double Tiempo = (int)TiemponumericUpDown.Value;
+       
 
+            if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text  == string.Empty)
+            {
+                Timer1.Start();
+            }
+            else
+            {
+                int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
+                int TempAire = (int)TempApagadonumericUpDown.Value;
+                double Tiempo = (int)TiemponumericUpDown.Value;
 
-
-            if (TiemponumericUpDown.Value > 15)
-            {
-                errorProvider1.SetError(TiemponumericUpDown, "El tiempo debe ser menor 15.. ");
-                TiemponumericUpDown.Focus();
-            }
-            else if (TiemponumericUpDown.Value <= 0)
-            {
-                errorProvider1.SetError(TiemponumericUpDown, "El tiempo debe ser mayor que !Cero!");
-                TiemponumericUpDown.Focus();
-            }
-
-            if (TempEncendidonumericUpDown.Value <= 17)
-            {
-                errorProvider1.SetError(TempEncendidonumericUpDown, "Esta temperatura no puede ser menor o igual de 17 grados!!!!");
-                TempEncendidonumericUpDown.Focus();
-            }
-            else if (TempEncendidonumericUpDown.Value <= 25)
-            {
-                errorProvider1.SetError(TempEncendidonumericUpDown, "La temperatura aun esta agradable Todavia debe ser mayor a 25.. ");
-                TempEncendidonumericUpDown.Focus();
-            }
-
-            if (TempApagadonumericUpDown.Value <= 16)
-            {
-                errorProvider1.SetError(TempApagadonumericUpDown, "Esta temperatura debe ser mayor a 16 Grados..");
-                TempApagadonumericUpDown.Focus();
-            }
-            else if (TempApagadonumericUpDown.Value > 21)
-            {
-                errorProvider1.SetError(TempApagadonumericUpDown, "Esta temperatura pasa los 21 grados..");
-                TempApagadonumericUpDown.Focus();
-            }
-
-
-            if (TempApagadonumericUpDown.Value == 0 && TempEncendidonumericUpDown.Value == 0 && TiemponumericUpDown.Value == 0 || TempEncendidonumericUpDown.Value == TempApagadonumericUpDown.Value)
-            {
-                errorProvider1.SetError(Generarbutton, "Los campos estan vacios");
-                Generarbutton.Focus();
-                IniciarcheckBox.Enabled = false;
-            }
-            else if(TempEncendidonumericUpDown.Value >=20 || TempApagadonumericUpDown.Value < TempEncendidonumericUpDown.Value)
-            {
                 Calcular(TempAmbiente, TempAire, Tiempo);
                 IniciarcheckBox.Enabled = true;
+
             }
-                               
         }
 
         private void Calcular(int TempAmbiente, int TempAire, double Tiempo)
@@ -309,5 +277,73 @@ namespace AireAconicionado
             Times.Interval = resultado;
         }
 
+        private void Timer1_Tick_1(object sender, EventArgs e)
+        {
+
+            Timer1.Interval = 1000;
+
+            contador++;
+
+            if(contador == 5)
+            {
+                Timer1.Stop();
+                Random Aleatorio = new Random();
+
+                int subida = Aleatorio.Next(19, 30);
+                int bajada = Aleatorio.Next(17, 24);
+                double Tiempo = Aleatorio.Next(15, 20);
+                int opcion = Aleatorio.Next(1, 4);
+
+
+                switch (opcion)
+                {
+                    case 1:
+                        {
+                            VentanacheckBox.Checked = true;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+
+                    case 2:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = true;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+                    case 3:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = true;
+
+                        }
+                        break;
+
+                    case 4:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+                }
+
+                TempEncendidonumericUpDown.Value = subida;
+                TempApagadonumericUpDown.Value = bajada;
+                TiemponumericUpDown.Value = (int)Tiempo;
+
+                Calcular(subida, bajada, Tiempo);
+
+                IniciarcheckBox.Enabled = true;
+            }
+
+           
+
+        }
     }
 }

@@ -47,12 +47,12 @@
             this.IniciarcheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Limpiarbutton1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.EncendidocheckBox = new System.Windows.Forms.CheckBox();
             this.ApagadocheckBox = new System.Windows.Forms.CheckBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TempEncendidonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempApagadonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
@@ -209,23 +209,13 @@
             // Limpiarbutton1
             // 
             this.Limpiarbutton1.Location = new System.Drawing.Point(10, 379);
-            this.Limpiarbutton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Limpiarbutton1.Margin = new System.Windows.Forms.Padding(2);
             this.Limpiarbutton1.Name = "Limpiarbutton1";
             this.Limpiarbutton1.Size = new System.Drawing.Size(74, 35);
             this.Limpiarbutton1.TabIndex = 20;
             this.Limpiarbutton1.Text = "Limpiar";
             this.Limpiarbutton1.UseVisualStyleBackColor = true;
             this.Limpiarbutton1.Click += new System.EventHandler(this.Limpiarbutton1_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "label6";
             // 
             // label7
             // 
@@ -250,7 +240,7 @@
             // 
             this.EncendidocheckBox.AutoSize = true;
             this.EncendidocheckBox.Location = new System.Drawing.Point(346, 379);
-            this.EncendidocheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EncendidocheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.EncendidocheckBox.Name = "EncendidocheckBox";
             this.EncendidocheckBox.Size = new System.Drawing.Size(77, 17);
             this.EncendidocheckBox.TabIndex = 25;
@@ -261,7 +251,7 @@
             // 
             this.ApagadocheckBox.AutoSize = true;
             this.ApagadocheckBox.Location = new System.Drawing.Point(346, 417);
-            this.ApagadocheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ApagadocheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.ApagadocheckBox.Name = "ApagadocheckBox";
             this.ApagadocheckBox.Size = new System.Drawing.Size(69, 17);
             this.ApagadocheckBox.TabIndex = 26;
@@ -272,6 +262,10 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // Timer1
+            // 
+            this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,7 +275,6 @@
             this.Controls.Add(this.EncendidocheckBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.Limpiarbutton1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.IniciarcheckBox);
@@ -333,11 +326,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Limpiarbutton1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox ApagadocheckBox;
         private System.Windows.Forms.CheckBox EncendidocheckBox;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Timer Timer1;
     }
 }
 
