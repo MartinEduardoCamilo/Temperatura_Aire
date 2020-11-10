@@ -82,7 +82,7 @@
             // 
             // TempEncendidonumericUpDown
             // 
-            this.TempEncendidonumericUpDown.Location = new System.Drawing.Point(16, 47);
+            this.TempEncendidonumericUpDown.Location = new System.Drawing.Point(19, 47);
             this.TempEncendidonumericUpDown.Name = "TempEncendidonumericUpDown";
             this.TempEncendidonumericUpDown.Size = new System.Drawing.Size(60, 20);
             this.TempEncendidonumericUpDown.TabIndex = 3;
