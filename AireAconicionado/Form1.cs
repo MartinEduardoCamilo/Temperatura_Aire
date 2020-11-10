@@ -56,11 +56,9 @@ namespace AireAconicionado
         {
             errorProvider1.Clear();
 
-       
-
             if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text  == string.Empty)
             {
-                Timer1.Start();
+                TimerAleatorio.Start();
             }
             else
             {
@@ -70,7 +68,6 @@ namespace AireAconicionado
 
                 Calcular(TempAmbiente, TempAire, Tiempo);
                 IniciarcheckBox.Enabled = true;
-
             }
         }
 
@@ -241,17 +238,7 @@ namespace AireAconicionado
         
         private void Limpiarbutton1_Click(object sender, EventArgs e)
         {
-            errorProvider1.Clear();          
-            dataGridView1.Rows.Clear();
-            TiemponumericUpDown.Value = 0;
-            TempEncendidonumericUpDown.Value = 0;
-            TempApagadonumericUpDown.Value = 0;
-            EnfriamientotextBox.Text = String.Empty;
-            VentanacheckBox.Checked = false;
-            PuertacheckBox.Checked = false;
-            PuertaVentanacheckBox.Checked = false;
-            IniciarcheckBox.Checked = false;
-            TempApagadonumericUpDown.ReadOnly = false;
+            Limpiar();
         }
 
         private void Desactivar()
@@ -267,6 +254,11 @@ namespace AireAconicionado
             PuertacheckBox.Checked = false;
             PuertaVentanacheckBox.Checked = false;
             EnfriamientotextBox.Text = String.Empty;
+            if(TempEncendidonumericUpDown.ReadOnly == true)
+            {
+                TimerAuto.Start();
+            }
+            
         }
 
 
@@ -280,17 +272,18 @@ namespace AireAconicionado
         private void Timer1_Tick_1(object sender, EventArgs e)
         {
 
-            Timer1.Interval = 1000;
+            TimerAleatorio.Interval = 1000;
 
             contador++;
 
             if(contador == 5)
             {
-                Timer1.Stop();
+                TimerAleatorio.Stop();
+                contador = 0;
                 Random Aleatorio = new Random();
 
-                int subida = Aleatorio.Next(19, 30);
-                int bajada = Aleatorio.Next(17, 24);
+                int subida = Aleatorio.Next(22, 30);
+                int bajada = Aleatorio.Next(16, 20);
                 double Tiempo = Aleatorio.Next(15, 20);
                 int opcion = Aleatorio.Next(1, 4);
 
@@ -340,10 +333,109 @@ namespace AireAconicionado
                 Calcular(subida, bajada, Tiempo);
 
                 IniciarcheckBox.Enabled = true;
+                IniciarcheckBox.Checked = true;
+
+                if (IniciarcheckBox.Checked == true)
+                {
+                    Times.Start();
+                    EncendidocheckBox.Checked = true;
+                    ApagadocheckBox.Checked = false;
+                }
             }
 
            
 
+        }
+
+        private void TimerAuto_Tick(object sender, EventArgs e)
+        {
+            TimerAuto.Interval = 1000;
+            contador++;
+            if (contador == 15)
+            {
+                TimerAuto.Stop();
+                TempEncendidonumericUpDown.ReadOnly = false;
+                contador = 0;
+                Limpiar();
+                Random Aleatorio = new Random();
+
+                int subida = Aleatorio.Next(22, 30);
+                int bajada = Aleatorio.Next(16, 20);
+                double Tiempo = Aleatorio.Next(15, 20);
+                int opcion = Aleatorio.Next(1, 4);
+
+
+                switch (opcion)
+                {
+                    case 1:
+                        {
+                            VentanacheckBox.Checked = true;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+
+                    case 2:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = true;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+                    case 3:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = true;
+
+                        }
+                        break;
+
+                    case 4:
+                        {
+                            VentanacheckBox.Checked = false;
+                            PuertacheckBox.Checked = false;
+                            PuertaVentanacheckBox.Checked = false;
+
+                        }
+                        break;
+                }
+
+                TempEncendidonumericUpDown.Value = subida;
+                TempApagadonumericUpDown.Value = bajada;
+                TiemponumericUpDown.Value = (int)Tiempo;
+
+                Calcular(subida, bajada, Tiempo);
+
+                IniciarcheckBox.Enabled = true;
+                IniciarcheckBox.Checked = true;
+
+                if (IniciarcheckBox.Checked == true)
+                {
+                    Times.Start();
+                    EncendidocheckBox.Checked = true;
+                    ApagadocheckBox.Checked = false;
+                }
+            }
+        }
+
+        private void Limpiar()
+        {
+            errorProvider1.Clear();
+            dataGridView1.Rows.Clear();
+            TiemponumericUpDown.Value = 0;
+            TempEncendidonumericUpDown.Value = 0;
+            TempApagadonumericUpDown.Value = 0;
+            EnfriamientotextBox.Text = String.Empty;
+            VentanacheckBox.Checked = false;
+            PuertacheckBox.Checked = false;
+            PuertaVentanacheckBox.Checked = false;
+            IniciarcheckBox.Checked = false;
+            TempApagadonumericUpDown.ReadOnly = false;
+            Acumulador_Temp = 0;
+            contador = 0;
         }
     }
 }

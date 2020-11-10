@@ -52,7 +52,8 @@
             this.EncendidocheckBox = new System.Windows.Forms.CheckBox();
             this.ApagadocheckBox = new System.Windows.Forms.CheckBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TimerAleatorio = new System.Windows.Forms.Timer(this.components);
+            this.TimerAuto = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TempEncendidonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempApagadonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
@@ -262,9 +263,13 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
-            // Timer1
+            // TimerAleatorio
             // 
-            this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick_1);
+            this.TimerAleatorio.Tick += new System.EventHandler(this.Timer1_Tick_1);
+            // 
+            // TimerAuto
+            // 
+            this.TimerAuto.Tick += new System.EventHandler(this.TimerAuto_Tick);
             // 
             // Form1
             // 
@@ -330,7 +335,8 @@
         private System.Windows.Forms.CheckBox ApagadocheckBox;
         private System.Windows.Forms.CheckBox EncendidocheckBox;
         private System.Windows.Forms.ErrorProvider errorProvider2;
-        private System.Windows.Forms.Timer Timer1;
+        private System.Windows.Forms.Timer TimerAleatorio;
+        private System.Windows.Forms.Timer TimerAuto;
     }
 }
 
