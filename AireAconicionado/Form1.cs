@@ -86,10 +86,12 @@ namespace AireAconicionado
            
                 if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text == string.Empty)
                 {
+                errorProvider1.Clear();
                     TimerAleatorio.Start();
                 }
-                else if(TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30 && TempApagadonumericUpDown.Value >= 17 && TempApagadonumericUpDown.Value <= 20 && TiemponumericUpDown.Value >= 15 && TiemponumericUpDown.Value <= 20)
+                else if(TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30 && TempApagadonumericUpDown.Value >= 17 && TempApagadonumericUpDown.Value <= 20  && TiemponumericUpDown.Value >= 15 && TiemponumericUpDown.Value <= 20 )
                 {
+                errorProvider1.Clear();
                     int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
                     int TempAire = (int)TempApagadonumericUpDown.Value;
                     double Tiempo = (int)TiemponumericUpDown.Value;
