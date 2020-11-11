@@ -41,7 +41,7 @@ namespace AireAconicionado
             dataGridView1.Columns.Add(c1);
             dataGridView1.Columns.Add(c2);
             dataGridView1.Columns.Add(c3);
-
+            PararcheckBox.Enabled = false;
             IniciarcheckBox.Enabled = false;
         }
 
@@ -55,6 +55,9 @@ namespace AireAconicionado
         private void Generarbutton_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
+
+            PararcheckBox.Checked = false;
+            PararcheckBox.Enabled = false;
 
             if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text  == string.Empty)
             {
@@ -79,7 +82,8 @@ namespace AireAconicionado
 
             double Enfriamiento = 0;
 
-            
+            PararcheckBox.Checked = false;
+            PararcheckBox.Enabled = false;
 
             if (VentanacheckBox.Checked == true)
             {
@@ -218,7 +222,7 @@ namespace AireAconicionado
 
         private void IniciarcheckBox_MouseClick(object sender, MouseEventArgs e)
         {
-
+            PararcheckBox.Checked = false;
             if (IniciarcheckBox.Checked == true)
             {
                 Times.Start();
@@ -232,7 +236,6 @@ namespace AireAconicionado
             int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
             int TempAire = (int)TempApagadonumericUpDown.Value;
             double Tiempo = (int)TiemponumericUpDown.Value;
-
             Calcular(TempAmbiente, TempAire, Tiempo);
         }
         
@@ -249,6 +252,16 @@ namespace AireAconicionado
             TempEncendidonumericUpDown.Increment = 0;
             ApagadocheckBox.Checked = true;
             EncendidocheckBox.Checked = false;
+
+            if(ApagadocheckBox.Checked == true)
+            {
+                PararcheckBox.Enabled = true;
+            }
+            else
+            {
+                PararcheckBox.Checked = false;
+            }
+
             IniciarcheckBox.Checked = false;
             VentanacheckBox.Checked = false;
             PuertacheckBox.Checked = false;
@@ -271,7 +284,7 @@ namespace AireAconicionado
 
         private void Timer1_Tick_1(object sender, EventArgs e)
         {
-
+          
             TimerAleatorio.Interval = 1000;
 
             contador++;
@@ -348,7 +361,8 @@ namespace AireAconicionado
         }
 
         private void TimerAuto_Tick(object sender, EventArgs e)
-        {
+        {        
+
             TimerAuto.Interval = 1000;
             contador++;
             if (contador == 15)
@@ -436,6 +450,14 @@ namespace AireAconicionado
             TempApagadonumericUpDown.ReadOnly = false;
             Acumulador_Temp = 0;
             contador = 0;
+        }
+
+        private void PararcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            TimerAleatorio.Stop();
+            TimerAuto.Stop();
+            Times.Stop();
+            dataGridView1.Rows.Clear();
         }
     }
 }

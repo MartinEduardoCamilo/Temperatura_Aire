@@ -54,6 +54,7 @@
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.TimerAleatorio = new System.Windows.Forms.Timer(this.components);
             this.TimerAuto = new System.Windows.Forms.Timer(this.components);
+            this.PararcheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TempEncendidonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TempApagadonumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TiemponumericUpDown)).BeginInit();
@@ -271,11 +272,23 @@
             // 
             this.TimerAuto.Tick += new System.EventHandler(this.TimerAuto_Tick);
             // 
+            // PararcheckBox
+            // 
+            this.PararcheckBox.AutoSize = true;
+            this.PararcheckBox.Location = new System.Drawing.Point(106, 396);
+            this.PararcheckBox.Name = "PararcheckBox";
+            this.PararcheckBox.Size = new System.Drawing.Size(51, 17);
+            this.PararcheckBox.TabIndex = 27;
+            this.PararcheckBox.Text = "Parar";
+            this.PararcheckBox.UseVisualStyleBackColor = true;
+            this.PararcheckBox.CheckedChanged += new System.EventHandler(this.PararcheckBox_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 450);
+            this.Controls.Add(this.PararcheckBox);
             this.Controls.Add(this.ApagadocheckBox);
             this.Controls.Add(this.EncendidocheckBox);
             this.Controls.Add(this.label8);
@@ -337,6 +350,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.Timer TimerAleatorio;
         private System.Windows.Forms.Timer TimerAuto;
+        private System.Windows.Forms.CheckBox PararcheckBox;
     }
 }
 
