@@ -56,7 +56,6 @@ namespace AireAconicionado
             if (TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30)
             {
                 
-
             }
             else
             {
@@ -118,9 +117,7 @@ namespace AireAconicionado
             {
                 Enfriamiento = Tiempo - (Tiempo * ventana);
                 Tiempo += Enfriamiento;
-
-                convertir(Enfriamiento);
-
+              
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
 
                 if (Acumulador_Temp < TempAmbiente && Acumulador_Temp > 0)
@@ -131,6 +128,9 @@ namespace AireAconicionado
 
                 Acumulador_Temp = TempAmbiente-1;
                 Acumulador = Enfriamiento -1;
+
+                convertir(Acumulador);
+
                 dataGridView1.Rows.Add(Acumulador_Temp, TempAire, Acumulador);
 
                 if (Acumulador_Temp == TempAire)
@@ -145,8 +145,6 @@ namespace AireAconicionado
                 Enfriamiento = Tiempo - (Tiempo * Puerta);
                 Tiempo += Enfriamiento;
 
-                convertir(Enfriamiento);
-
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
 
                 if (Acumulador_Temp < TempAmbiente && Acumulador_Temp > 0)
@@ -157,6 +155,7 @@ namespace AireAconicionado
 
                 Acumulador_Temp = TempAmbiente - 1;
                 Acumulador = Enfriamiento - 1;
+                convertir(Acumulador);
                 dataGridView1.Rows.Add(Acumulador_Temp, TempAire, Acumulador);
 
                 if (Acumulador_Temp == TempAire)
@@ -170,8 +169,6 @@ namespace AireAconicionado
                 Enfriamiento = Tiempo - (Tiempo * (ventana + Puerta));
                 Tiempo += Enfriamiento;
 
-                convertir(Enfriamiento);
-
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
 
                 if (Acumulador_Temp < TempAmbiente && Acumulador_Temp > 0)
@@ -182,6 +179,8 @@ namespace AireAconicionado
 
                 Acumulador_Temp = TempAmbiente - 1;
                 Acumulador = Enfriamiento - 1;
+
+                convertir(Acumulador);
 
                 dataGridView1.Rows.Add(Acumulador_Temp, TempAire, Acumulador);
 
@@ -196,8 +195,6 @@ namespace AireAconicionado
                 Enfriamiento = Tiempo;
                 Tiempo += Enfriamiento;
 
-                convertir(Enfriamiento);
-
                 EnfriamientotextBox.Text = Enfriamiento.ToString();
 
                 if (Acumulador_Temp < TempAmbiente && Acumulador_Temp > 0)
@@ -208,6 +205,8 @@ namespace AireAconicionado
 
                 Acumulador_Temp = TempAmbiente - 1;
                 Acumulador = Enfriamiento - 1;
+
+                convertir(Acumulador);
                 dataGridView1.Rows.Add(Acumulador_Temp, TempAire, Acumulador);
 
                 if (Acumulador_Temp == TempAire)
@@ -384,9 +383,6 @@ namespace AireAconicionado
                     ApagadocheckBox.Checked = false;
                 }
             }
-
-           
-
         }
 
         private void TimerAuto_Tick(object sender, EventArgs e)
