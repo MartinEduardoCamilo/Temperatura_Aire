@@ -55,15 +55,27 @@ namespace AireAconicionado
 
             if (TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30)
             {
-                errorProvider1.SetError(TempEncendidonumericUpDown, "La Temperatura de Encendido debe estar 21 a 30 Grados.. ");
+                
 
             }
+            else
+            {
+                errorProvider1.SetError(TempEncendidonumericUpDown, "La Temperatura de Encendido debe estar 21 a 30 Grados.. ");
+            }
             if (TempApagadonumericUpDown.Value >= 17 && TempApagadonumericUpDown.Value <= 20)
+            {
+                
+            }
+            else
             {
                 errorProvider1.SetError(TempApagadonumericUpDown, "La Temperatura de Apagado debe de estar 17 a 20 Grados...");
             }
 
             if (TiemponumericUpDown.Value >= 15 && TiemponumericUpDown.Value <= 20)
+            {
+                
+            }
+            else
             {
                 errorProvider1.SetError(TiemponumericUpDown, "El Tiempo debe de Estar entre 15 y 20 Minuto..");
             }
@@ -71,19 +83,22 @@ namespace AireAconicionado
             PararcheckBox.Checked = false;
             PararcheckBox.Enabled = false;
 
-            if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text  == string.Empty)
-            {
-                TimerAleatorio.Start();
-            }
-            else
-            {
-                int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
-                int TempAire = (int)TempApagadonumericUpDown.Value;
-                double Tiempo = (int)TiemponumericUpDown.Value;
+           
+                if (TempEncendidonumericUpDown.Value == 0 && TempApagadonumericUpDown.Value == 0 && EnfriamientotextBox.Text == string.Empty)
+                {
+                    TimerAleatorio.Start();
+                }
+                else if(TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30 && TempApagadonumericUpDown.Value >= 17 && TempApagadonumericUpDown.Value <= 20 && TiemponumericUpDown.Value >= 15 && TiemponumericUpDown.Value <= 20)
+                {
+                    int TempAmbiente = (int)TempEncendidonumericUpDown.Value;
+                    int TempAire = (int)TempApagadonumericUpDown.Value;
+                    double Tiempo = (int)TiemponumericUpDown.Value;
 
-                Calcular(TempAmbiente, TempAire, Tiempo);
-                IniciarcheckBox.Enabled = true;
-            }
+                    Calcular(TempAmbiente, TempAire, Tiempo);
+                    IniciarcheckBox.Enabled = true;
+                }
+            
+
         }
 
         private void Calcular(int TempAmbiente, int TempAire, double Tiempo)
