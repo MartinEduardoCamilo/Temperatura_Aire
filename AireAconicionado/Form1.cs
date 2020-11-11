@@ -46,15 +46,27 @@ namespace AireAconicionado
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-            
-                    
+        {                   
         }
 
         private void Generarbutton_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
+
+            if (TempEncendidonumericUpDown.Value >= 21 && TempEncendidonumericUpDown.Value <= 30)
+            {
+                errorProvider1.SetError(TempEncendidonumericUpDown, "La Temperatura de Encendido debe estar 21 a 30 Grados.. ");
+
+            }
+            if (TempApagadonumericUpDown.Value >= 17 && TempApagadonumericUpDown.Value <= 20)
+            {
+                errorProvider1.SetError(TempApagadonumericUpDown, "La Temperatura de Apagado debe de estar 17 a 20 Grados...");
+            }
+
+            if (TiemponumericUpDown.Value >= 15 && TiemponumericUpDown.Value <= 20)
+            {
+                errorProvider1.SetError(TiemponumericUpDown, "El Tiempo debe de Estar entre 15 y 20 Minuto..");
+            }
 
             PararcheckBox.Checked = false;
             PararcheckBox.Enabled = false;
@@ -295,8 +307,8 @@ namespace AireAconicionado
                 contador = 0;
                 Random Aleatorio = new Random();
 
-                int subida = Aleatorio.Next(22, 30);
-                int bajada = Aleatorio.Next(16, 20);
+                int subida = Aleatorio.Next(21, 30);
+                int bajada = Aleatorio.Next(17, 20);
                 double Tiempo = Aleatorio.Next(15, 20);
                 int opcion = Aleatorio.Next(1, 4);
 
@@ -373,8 +385,8 @@ namespace AireAconicionado
                 Limpiar();
                 Random Aleatorio = new Random();
 
-                int subida = Aleatorio.Next(22, 30);
-                int bajada = Aleatorio.Next(16, 20);
+                int subida = Aleatorio.Next(21, 30);
+                int bajada = Aleatorio.Next(17, 20);
                 double Tiempo = Aleatorio.Next(15, 20);
                 int opcion = Aleatorio.Next(1, 4);
 
