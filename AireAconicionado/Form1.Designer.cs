@@ -190,11 +190,11 @@
             // IniciarcheckBox
             // 
             this.IniciarcheckBox.AutoSize = true;
-            this.IniciarcheckBox.Location = new System.Drawing.Point(177, 322);
+            this.IniciarcheckBox.Location = new System.Drawing.Point(346, 379);
             this.IniciarcheckBox.Name = "IniciarcheckBox";
-            this.IniciarcheckBox.Size = new System.Drawing.Size(63, 17);
+            this.IniciarcheckBox.Size = new System.Drawing.Size(77, 17);
             this.IniciarcheckBox.TabIndex = 18;
-            this.IniciarcheckBox.Text = "Prender";
+            this.IniciarcheckBox.Text = "Encendido";
             this.IniciarcheckBox.UseVisualStyleBackColor = true;
             this.IniciarcheckBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.IniciarcheckBox_MouseClick);
             // 
@@ -241,7 +241,7 @@
             // EncendidocheckBox
             // 
             this.EncendidocheckBox.AutoSize = true;
-            this.EncendidocheckBox.Location = new System.Drawing.Point(346, 379);
+            this.EncendidocheckBox.Location = new System.Drawing.Point(346, 378);
             this.EncendidocheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.EncendidocheckBox.Name = "EncendidocheckBox";
             this.EncendidocheckBox.Size = new System.Drawing.Size(77, 17);
