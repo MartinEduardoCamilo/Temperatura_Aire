@@ -127,7 +127,7 @@ namespace AireAconicionado
                 }
 
                 Acumulador_Temp = TempAmbiente-1;
-                Acumulador = Enfriamiento -1;
+                Acumulador = Enfriamiento - 0.69;
 
                 convertir(Acumulador);
 
@@ -154,7 +154,7 @@ namespace AireAconicionado
                 }
 
                 Acumulador_Temp = TempAmbiente - 1;
-                Acumulador = Enfriamiento - 1;
+                Acumulador = Enfriamiento - 0.69;
                 convertir(Acumulador);
                 dataGridView1.Rows.Add(Acumulador_Temp, TempAire, Acumulador);
 
@@ -178,7 +178,7 @@ namespace AireAconicionado
                 }
 
                 Acumulador_Temp = TempAmbiente - 1;
-                Acumulador = Enfriamiento - 1;
+                Acumulador = Enfriamiento - 0.69;
 
                 convertir(Acumulador);
 
@@ -305,7 +305,7 @@ namespace AireAconicionado
 
         private void convertir(double Tiempo)
         {
-            int resultado = (int)((Convert.ToInt64(Tiempo)) * 1000);
+            int resultado = ((int)(Tiempo * 1000));
 
             Times.Interval = resultado;
         }
