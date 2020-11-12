@@ -307,6 +307,11 @@ namespace AireAconicionado
         {
             int resultado = ((int)(Tiempo * 1000));
 
+            if(Tiempo < 0 || Tiempo ==0)
+            {
+                Times.Stop();
+            }
+
             Times.Interval = resultado;
         }
 
